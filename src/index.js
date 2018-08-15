@@ -1,23 +1,27 @@
-import React from 'react';
+import bootcss from 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react'
 import ReactDOM from 'react-dom'
-
-const myh1 = React.createElement('h1' , {
-    id:'myh1',
-    title:"this is my first react project"
-}, "这是我们的主界面");
-const mydiv = React.createElement('div' , null , "这是一个div对象" , myh1);
-//至少三个参数
-//React.createElement方法接受三个参数 第一个参数表示类型 第二个参数是一个对象或者是NULL 参数三 子节点 参数n 其他子节点
-//先放一个我们要进行渲染的容器
-//进行渲染
-ReactDOM.render(mydiv , document.getElementById('app'));
-
-//猜测第二个参数接受的是一个dom元素而不是选择器
-//使用reactdom把元素渲染到页面上 之前我们只是使用的虚拟dom
-
-//混合使用xml的语法
-//渲染页面 最好的方法是什么？ 当然是使用html react 中允许我们使用 html 这就是我们所说的jsx语法 但是在js中写html肯定不能打包成功 我们要使用jsx 当然首先要使用把babel就可以将语句转换成react.createElement()语法
-//但是这样使用确实麻烦
-
-console.log("ok");
-console.log("is changed");
+import Hello from '@/Hello'
+import Chat from '@/class_key_components'
+import CmtList from "@/commentList"
+import Bindevent from "@/Bindevent"
+import InputBind from '@/input_bind'
+console.log(bootcss);
+const user = {
+    name:"大黄",
+    age:3,
+    gender:"雄"
+}
+//创建组件的第一种方法 这是组件和render相同
+// 在形参列表中接收 之后吧内容.出来 不管是vue还是react 组件中的props永远都是只读的 所以说不要试图去改造props中的内容
+//构造函数特点 首字母是大写的 里面没写全会报nothing is return 注意组件的首字母一定是大写的 这样在渲染时可以被当作组件而不是普通的标签
+//-------------------------------------------------------------------------------------------
+//把组件用标签形式写在这里
+ReactDOM.render(<div>
+    123<Hello {...user}></Hello>
+    <Chat {...user}></Chat>
+    <CmtList></CmtList>
+    <button className="btn btn-primary">你好</button>
+    <Bindevent/>
+    <InputBind/>
+</div> , document.getElementById('app'));
